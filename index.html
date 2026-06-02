@@ -611,14 +611,14 @@ async function generate() {
       resultText.textContent = '';
       errorMsg.textContent = 'エラー：' + (data.error || 'もう一度お試しください');
     }
-  } catch (e) {
-    loadingDots.style.display = 'none';
+} catch (e) {
     resultText.textContent = '';
     errorMsg.textContent = 'ネットワークエラーが発生しました。';
+  } finally {
+    loadingDots.style.display = 'none';
+    btn.disabled = false;
+    btn.textContent = 'コメントを生成する';
   }
-
-  btn.disabled = false;
-  btn.textContent = 'コメントを生成する';
 }
 
 function copyText() {
