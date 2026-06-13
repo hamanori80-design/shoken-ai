@@ -30,7 +30,7 @@
     background: var(--paper);
     color: var(--ink);
     min-height: 100vh;
-    padding-bottom: 80px;
+    padding-bottom: 140px;
     background-image: repeating-linear-gradient(
       0deg, transparent, transparent 31px,
       var(--paper-ruled) 31px, var(--paper-ruled) 32px
@@ -41,7 +41,7 @@
   .page-wrapper {
     max-width: 780px;
     margin: 0 auto;
-    padding: 0 20px 80px;
+    padding: 0 20px 140px;
     background: var(--paper);
     background-image: repeating-linear-gradient(
       0deg, transparent, transparent 31px,
@@ -348,20 +348,25 @@
 
   .error-msg { color: var(--accent); font-size: 13px; margin-top: 8px; }
 
-  .plan-banner {
+  .bottom-fixed-area {
     position: fixed;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     max-width: 780px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .plan-banner {
     background: var(--ink);
     color: var(--paper);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 24px 12px 72px;
-    z-index: 100;
     gap: 12px;
   }
 
@@ -398,6 +403,7 @@
     align-items: stretch;
     gap: 8px;
     padding: 14px 24px 14px 72px;
+    border-top: 1px solid rgba(250,249,246,0.15);
   }
 
   .email-banner-label {
@@ -552,26 +558,28 @@
 
 <div class="toast" id="toast"></div>
 
-<div class="plan-banner" id="planBanner">
-  <div class="plan-banner-left">
-    <div class="plan-count" id="planCountArea">
-      今月の残り生成回数：<strong id="remainCount">10</strong> 回
+<div class="bottom-fixed-area">
+  <div class="plan-banner" id="planBanner">
+    <div class="plan-banner-left">
+      <div class="plan-count" id="planCountArea">
+        今月の残り生成回数：<strong id="remainCount">10</strong> 回
+      </div>
+      <div class="plan-divider"></div>
+      <div class="plan-upgrade-text">月額680円で所見・学級通信ツール使い放題</div>
     </div>
-    <div class="plan-divider"></div>
-    <div class="plan-upgrade-text">月額680円で所見・学級通信ツール使い放題</div>
+    <div id="planRightArea">
+      <a class="plan-btn" href="https://buy.stripe.com/8x228sbbM48g6gE2g18Vi04" target="_blank">
+        有料プランに申し込む →
+      </a>
+    </div>
   </div>
-  <div id="planRightArea">
-    <a class="plan-btn" href="https://buy.stripe.com/8x228sbbM48g6gE2g18Vi04" target="_blank">
-      有料プランに申し込む →
-    </a>
-  </div>
-</div>
 
-<div class="plan-banner email-banner" id="emailBanner" style="display:none;">
-  <div class="email-banner-label">プレミアム会員の方はメールアドレスを入力してください</div>
-  <div class="email-banner-row">
-    <input type="email" id="premiumEmail" class="email-input" placeholder="ご登録のメールアドレス">
-    <button class="plan-btn" onclick="checkPremium()">確認</button>
+  <div class="plan-banner email-banner" id="emailBanner" style="display:none;">
+    <div class="email-banner-label">プレミアム会員の方はメールアドレスを入力してください</div>
+    <div class="email-banner-row">
+      <input type="email" id="premiumEmail" class="email-input" placeholder="ご登録のメールアドレス">
+      <button class="plan-btn" onclick="checkPremium()">確認</button>
+    </div>
   </div>
 </div>
 
